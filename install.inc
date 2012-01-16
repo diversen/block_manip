@@ -1,6 +1,6 @@
 <?php
 
-$_INSTALL['VERSION'] = 1.31;
+$_INSTALL['VERSION'] = 1.41;
 
 $_INSTALL['MAIN_MENU_ITEM'] = array (
     'title' => 'block_manip_module_main_title',
