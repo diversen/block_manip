@@ -1,18 +1,27 @@
 <?php
 
-template::setInlineJs(config::getModulePath('block_manip') . "/assets/sort.js");
-//echo "hello world";
-template::setInlineCss(config::getModulePath('block_manip') . "/assets/sort.css");
+include_module ('block_manip');
+$block_manip_js = config::getModulePath('block_manip') . "/assets/sort.js";
+template::setInlineCss(config::getModulePath('block_manip') . "/assets/sort.css");;
 
-?>
-<div id="sortable">
-<ol id="sortable1" class ="connectedSortable">
-    <li id="entry_1">1 bla</li>
-    <li id="entry_2">2 bla</li>
-</ol>
+$search = array ();
+$search[] = '{block_manip_js_ids}';
+$search[] = '{block_manip_js_data}';
 
-<ol id="sortable2" class = "connectedSortable">
-    <li id="entry_3">3 bla</li>
-    <li id="entry_4">4 bla</li>
-</ol>
-</div>
+$replace = array ();
+$replace[] = block_manip::getJsIds();
+$replace[] = block_manip::getJsData();
+
+            //$replace = $code;
+            template::setInlineJs(
+                $block_manip_js, 
+                // load last or close to. 
+                10000, 
+                array ('no_cache'   => 1, 
+                       'search'     => $search, 
+                       'replace'    => $replace)
+            );
+
+
+block_manip::getBlocksFull();
+return;

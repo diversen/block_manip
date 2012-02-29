@@ -1,6 +1,6 @@
 $(function() 
 {
-    $("#sortable1, #sortable2").sortable(
+    $("{block_manip_js_ids}").sortable(
     {
         connectWith: '.connectedSortable',
         update : function () 
@@ -8,18 +8,18 @@ $(function()
             $.ajax(
             {
                 type: "POST",
-                url: "sort.php",
+                url: "/block_manip/sort/sort",
                 data: 
                 {
-                    sort1:$("#sortable1").sortable('serialize'),
-                    sort2:$("#sortable2").sortable('serialize')
+                    {block_manip_js_data}
                 },
                 success: function(html)
                 {
                     
-                    alert(html);
-                    $('.success').fadeIn(500);
-                    $('.success').fadeOut(500);
+                    //alert(html);
+                    $('.manip_success').show();
+                   $('.manip_success').fadeIn(500);
+                    $('.manip_success').fadeOut(500);
                 }
             });
         } 
