@@ -5,3 +5,5 @@ if (!session::checkAccessControl('block_manip_allow')){
 }
 
 include_module ('block_manip');
+block_manip::displayAll();
+
