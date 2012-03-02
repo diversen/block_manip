@@ -21,8 +21,6 @@ try {
                 $data[] = str_replace('-', '/', $in_val);
             }
         }
-        //cos_error_log($key);
-        //cos_error_log(print_r($data, 1));
         configdb::set($key, $data, 'main');
     }
 } catch (PDOException $e) {            

@@ -22,4 +22,6 @@ if (isset($_POST['submit'])) {
     }
 }
 
+$id = block_manip::getId();
+echo $block->includeSubModules($id);
 $block->form('update');
