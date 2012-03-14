@@ -11,3 +11,18 @@ Email: dennis.iversen@gmail.com
 CVR:
 22 22 22 22
 Jarl & Marianne Schacht";
+
+$_COS_LANG_MODULE['block_manip_label_add_block'] = 'Add block';
+$_COS_LANG_MODULE['block_manip_form_show_title'] = 'Show Title';
+$_COS_LANG_MODULE['block_manip_confirm_insert'] = 'Block added';
+$_COS_LANG_MODULE['block_manip_label_edit_block'] = 'Edit block';
+$_COS_LANG_MODULE['block_manip_confirm_deleted'] = 'Block deleted';
+$_COS_LANG_MODULE['block_manip_label_delete_block'] = 'Deleted';
+$_COS_LANG_MODULE['block_manip_form_error_title'] = 'Add title';
+$_COS_LANG_MODULE['block_manip_form_error_content'] = 'Add content';
+
+$_COS_LANG_MODULE['blocks'] = 'Left blocks';
+$_COS_LANG_MODULE['blocks_sec'] = 'Right blocks';
+$_COS_LANG_MODULE['blocks_top'] = 'Top blocks';
+$_COS_LANG_MODULE['blocks_buttom'] = 'Buttom blocks';
+$_COS_LANG_MODULE['blocks_unused'] = 'Blocks not used';
