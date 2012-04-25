@@ -36,9 +36,9 @@ class block_manip {
         $blocks = self::getBlocks();
         $valid_blocks = self::getManipBlocks();
         
-        $str = "<div class = \"manip_success\">Done</div>\n";
+        
 
-        $str.= self::getListStart();
+        $str = self::getListStart();
         foreach ($blocks as $val) {
             if (in_array($val, $valid_blocks)) {
                 $values = config::getMainIni($val);
@@ -50,6 +50,9 @@ class block_manip {
         if (!$values) $values = array ();
         $str.= self::getOlBlock($values, 'blocks_unused');
         $str.= self::getListEnd();
+        
+        $success = lang::translate('block_manip_sort_success');
+        $str.= "<div class = \"manip_success\">$success</div>\n";
         echo $str;
     }
     

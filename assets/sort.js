@@ -15,11 +15,10 @@ $(function()
                 },
                 success: function(html)
                 {
+
+                    $('.manip_success').show().delay(1000).fadeOut();
+
                     
-                    //alert(html);
-                    $('.manip_success').show();
-                   $('.manip_success').fadeIn(500);
-                    $('.manip_success').fadeOut(500);
                 }
             });
         } 

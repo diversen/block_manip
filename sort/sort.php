@@ -1,5 +1,8 @@
 <?php
 
+if (!session::checkAccessControl('block_manip_allow')){
+    return;
+}
 
 moduleLoader::includeModule('configdb');
 include_module ('block_manip');

@@ -28,3 +28,5 @@ $_COS_LANG_MODULE['blocks_top'] = 'Top blokke';
 $_COS_LANG_MODULE['blocks_buttom'] = 'Bund blokke';
 $_COS_LANG_MODULE['blocks_unused'] = 'Ubenyttede blokke';
 
+
+$_COS_LANG_MODULE['block_manip_sort_success'] = 'Blokkenes orden er blevet gemt';

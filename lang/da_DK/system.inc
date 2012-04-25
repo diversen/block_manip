@@ -10,3 +10,4 @@ $_COS_LANG_MODULE['block_manip_menu_costum_add'] = 'Tilføj';
 $_COS_LANG_MODULE['block_manip_costum_block_edit'] = 'Vis';
 
 $_COS_LANG_MODULE['block_manip_costum_block_list'] = 'Egne Blokke';
+

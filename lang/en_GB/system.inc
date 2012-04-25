@@ -15,3 +15,4 @@ $_COS_LANG_MODULE['blocks'] = 'Blocks';
 
 $_COS_LANG_MODULE['/modules/block_manip/blocks/block_manip_info.inc-human'] = 'Custom Block';
 
+

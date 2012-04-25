@@ -26,3 +26,5 @@ $_COS_LANG_MODULE['blocks_sec'] = 'Right blocks';
 $_COS_LANG_MODULE['blocks_top'] = 'Top blocks';
 $_COS_LANG_MODULE['blocks_buttom'] = 'Buttom blocks';
 $_COS_LANG_MODULE['blocks_unused'] = 'Blocks not used';
+
+$_COS_LANG_MODULE['block_manip_sort_success'] = 'Block order has been saved';
