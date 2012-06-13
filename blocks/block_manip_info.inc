@@ -9,5 +9,4 @@ function block_block_manip_info () {
     
     $str = "<div class=\"block\">\n<ul><li>$filtered_content</li></ul></div>\n";
     return $str;
-    
 }

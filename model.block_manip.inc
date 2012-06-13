@@ -97,13 +97,17 @@ class block_manip {
         $str = "<h3>" . lang::translate($name) . "</h3>\n";
         $str.= "<ol id=\"$name\" class =\"connectedSortable\">\n";
         $num++;
+
+        //print_r($values);
         foreach ($values as $val) {
             
             // check for custom blocks
             if (is_numeric($val)) {
+                //print_r($val);
                 $val_str = $val;
                 
                 $row = self::getOne($val);
+                //print_r($row);
                 $name = $row['title'];
             } else {
                 $val_str = str_replace('/', '-', $val);
@@ -173,8 +177,8 @@ class block_manip {
         $label = lang::system('system_form_label_content'). '<br />';
         $label.= moduleLoader::getFiltersHelp(config::getModuleIni('block_manip_filters'));
 
-        html::label('content', $label);
-        html::textarea('content', null, array('id' => 'markdown'));
+        html::label('content_block', $label);
+        html::textarea('content_block', null, array('class' => 'markdown'));
 
         html::label('show_title', lang::translate('block_manip_form_show_title') );
         html::checkbox('show_title');
@@ -196,8 +200,8 @@ class block_manip {
             self::$errors['title'] = lang::translate('block_manip_form_error_title');
         } 
         
-        if (empty($_POST['content'])) {
-            self::$errors['content'] = lang::translate('block_manip_form_error_content');
+        if (empty($_POST['content_block'])) {
+            self::$errors['content_block'] = lang::translate('block_manip_form_error_content');
         }
         
         if (!isset($_POST['show_title'])) {
@@ -368,6 +372,7 @@ class block_manip {
     public static function includeSubModules ($id) {
         
         $modules = config::getModuleIni('block_manip_modules');
+        //print_r($modules);
         moduleLoader::includeModules($modules);
 
         $return_url = self::getReturnUrlFromId($id);
@@ -378,8 +383,15 @@ class block_manip {
             'return_url' => $return_url
         );
 
+        if ($modules) {
+        $ary = moduleLoader::subModuleGetAdminOptions($modules, $options);
+        return implode(MENU_SUB_SEPARATOR, $ary);
+}
+        
         $content = moduleLoader::subModuleGetPreContent($modules, $options);
-        $content.= moduleLoader::subModuleGetInlineContent($modules, $options);
+        print_r($content);
+        return implode(MENU_SUB_SEPARATOR, $content);
+        //$content.= moduleLoader::subModuleGetInlineContent($modules, $options);
         return $content;
     }
 

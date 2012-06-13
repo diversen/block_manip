@@ -9,6 +9,7 @@ include_module ('block_manip');
 
 $blocks = block_manip::getManipBlocks();
 
+
 $data = array ();
 db::$dbh->beginTransaction();
 
@@ -18,8 +19,7 @@ try {
         
         if (!isset($_POST[$key])) {
             $data = array ();
-        } else {
-        
+        } else {      
             foreach ($_POST[$key] as $in_val) {
                 $data[] = str_replace('-', '/', $in_val);
             }
