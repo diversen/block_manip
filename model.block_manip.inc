@@ -1,5 +1,6 @@
 <?php
 
+template::setJs('/js/jquery.tr.js');
 class block_manip {
     
     public static function loadAssets ($options) {
@@ -163,7 +164,9 @@ class block_manip {
             $vars = self::getOne($id);
             $legend = lang::translate('block_manip_label_edit_block');
         } else {
-            block_manip::loadAssets(array());
+            $options['js'] = array ('reference' => 'block_manip', 'parent_id' => null );
+            //blog::loadAssets($options);
+            block_manip::loadAssets($options);
             $legend = lang::translate('block_manip_label_add_block');
         }
         
@@ -389,10 +392,10 @@ class block_manip {
 }
         
         $content = moduleLoader::subModuleGetPreContent($modules, $options);
-        print_r($content);
+        //print_r($content);
         return implode(MENU_SUB_SEPARATOR, $content);
         //$content.= moduleLoader::subModuleGetInlineContent($modules, $options);
-        return $content;
+        //return $content;
     }
 
 }
