@@ -267,13 +267,9 @@ class block_manip {
             $blocks = block_manip::getManipBlocks();
             foreach ($blocks as $val) {
                 $data = config::getMainIni($val);
-                //print "bfore $val";
-                
-                //print_r($data);
+
                 foreach ($data as $in_key => $in_val) {
                     if ($in_val == $id) {
-                        echo "unsetting $id";
-                        //print_r($data); die;
                         unset($data[$in_key]);
                     }
                 }         
