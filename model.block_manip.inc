@@ -165,7 +165,6 @@ class block_manip {
             $legend = lang::translate('block_manip_label_edit_block');
         } else {
             $options['js'] = array ('reference' => 'block_manip', 'parent_id' => null );
-            //blog::loadAssets($options);
             block_manip::loadAssets($options);
             $legend = lang::translate('block_manip_label_add_block');
         }
