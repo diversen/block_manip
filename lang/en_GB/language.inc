@@ -17,7 +17,7 @@ $_COS_LANG_MODULE['block_manip_form_show_title'] = 'Show Title';
 $_COS_LANG_MODULE['block_manip_confirm_insert'] = 'Block added';
 $_COS_LANG_MODULE['block_manip_label_edit_block'] = 'Edit block';
 $_COS_LANG_MODULE['block_manip_confirm_deleted'] = 'Block deleted';
-$_COS_LANG_MODULE['block_manip_label_delete_block'] = 'Deleted';
+$_COS_LANG_MODULE['block_manip_label_delete_block'] = 'Delete block';
 $_COS_LANG_MODULE['block_manip_form_error_title'] = 'Add title';
 $_COS_LANG_MODULE['block_manip_form_error_content'] = 'Add content';
 
