@@ -348,10 +348,14 @@ class block_manip {
      * @return string $link 
      */
     public static function getLinkFromId ($id) {
+        $item = self::getOne($id);
+        
         $url = self::getReturnUrlFromId($id);
-        $title = 'bla';
+        $title = html::specialEncode($item['title']);
         return html::createLink($url, $title);
     }
+    
+   
     
     /**
      * gets redirect 
