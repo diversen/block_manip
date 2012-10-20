@@ -291,10 +291,22 @@ class block_manip {
     public function update () {
         
         $id = self::getId();
+        
+        db::begin();
         $db = new db();
         $values = db::prepareToPost();
         $values = html::specialDecode($values);
-        return $db->update('block_manip', $values, $id);
+        $db->update('block_manip', $values, $id);
+        
+        //$insert_id = db::$dbh->lastInsertId();
+        $unused = config::getMainIni('blocks_unused');
+        
+        if (!is_array($unused)) $unused = array();      
+        if (!in_array ($id, $unused)) { 
+            array_push($unused, $id);
+            configdb::set('blocks_unused', $unused, 'main');
+        }
+        return db::commit();
     }
     
     /**
@@ -386,15 +398,12 @@ class block_manip {
         );
 
         if ($modules) {
-        $ary = moduleLoader::subModuleGetAdminOptions($modules, $options);
-        return implode(MENU_SUB_SEPARATOR, $ary);
-}
+            $ary = moduleLoader::subModuleGetAdminOptions($modules, $options);
+            return implode(MENU_SUB_SEPARATOR, $ary);
+        }
         
         $content = moduleLoader::subModuleGetPreContent($modules, $options);
-        //print_r($content);
         return implode(MENU_SUB_SEPARATOR, $content);
-        //$content.= moduleLoader::subModuleGetInlineContent($modules, $options);
-        //return $content;
     }
 
 }
