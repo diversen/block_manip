@@ -5,10 +5,10 @@ if (!session::checkAccessControl('block_manip_allow')){
 }
 
 include_module ('block_manip');
-$block = new block_manip();
+$block = new blockManip();
 
 if (isset($_POST['submit'])) {
-    if (empty(block_manip::$errors)) {
+    if (empty(blockManip::$errors)) {
         $id = $block->getId();
         $res = $block->delete($id);
         if ($res) {
@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
             cos_error_log('Should not happen');
         }        
     } else {
-        view_form_errors(block_manip::$errors);
+        view_form_errors(blockManip::$errors);
     }
 }
 

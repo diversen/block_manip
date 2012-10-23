@@ -1,7 +1,7 @@
 <?php
 
 template::setJs('/js/jquery.tr.js');
-class block_manip {
+class blockManip {
     
     public static function loadAssets ($options) {
         if (config::getModuleIni('block_manip_markedit')) {
@@ -159,13 +159,13 @@ class block_manip {
             
             $options = array ();
             $options['js'] = array ('reference' => 'block_manip', 'parent_id' => $id );
-            block_manip::loadAssets($options);
+            blockManip::loadAssets($options);
             
             $vars = self::getOne($id);
             $legend = lang::translate('block_manip_label_edit_block');
         } else {
             $options['js'] = array ('reference' => 'block_manip', 'parent_id' => null );
-            block_manip::loadAssets($options);
+            blockManip::loadAssets($options);
             $legend = lang::translate('block_manip_label_add_block');
         }
         
@@ -264,7 +264,7 @@ class block_manip {
 
             // traverse blocks and remove element if set 
             //$data = array();
-            $blocks = block_manip::getManipBlocks();
+            $blocks = blockManip::getManipBlocks();
             foreach ($blocks as $val) {
                 $data = config::getMainIni($val);
 
@@ -392,12 +392,4 @@ class block_manip {
         //$content.= moduleLoader::subModuleGetInlineContent($modules, $options);
         //return $content;
     }
-
-}
-
-/**
- * alias. Needs to be blockManip when using sub modules.  
- */
-class blockManip extends block_manip {
-        
 }

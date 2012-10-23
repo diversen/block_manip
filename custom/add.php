@@ -6,11 +6,11 @@ if (!session::checkAccessControl('block_manip_allow')){
 
 include_module ('block_manip');
 
-$block = new block_manip();
+$block = new blockManip();
 
 if (isset($_POST['submit'])) {
     $block->sanitize();
-    if (empty(block_manip::$errors)) {
+    if (empty(blockManip::$errors)) {
         $res = $block->insert();
         if ($res) {
             http::locationHeader('/block_manip/custom/index', 
@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
             cos_error_log('Should not happen');
         }        
     } else {
-        view_form_errors(block_manip::$errors);
+        view_form_errors(blockManip::$errors);
     }
 }
 
