@@ -13,8 +13,8 @@ $search[] = '{block_manip_js_ids}';
 $search[] = '{block_manip_js_data}';
 
 $replace = array ();
-$replace[] = blockManip::getJsIds();
-$replace[] = blockManip::getJsData();
+$replace[] = block_manip::getJsIds();
+$replace[] = block_manip::getJsData();
 
             //$replace = $code;
             template::setInlineJs(
@@ -27,5 +27,5 @@ $replace[] = blockManip::getJsData();
             );
 
 
-blockManip::getBlocksFull();
+block_manip::getBlocksFull();
 return;

@@ -5,11 +5,11 @@ if (!session::checkAccessControl('block_manip_allow')){
 }
 
 include_module ('block_manip');
-$block = new blockManip();
+$block = new block_manip();
 
 if (isset($_POST['submit'])) {
     $block->sanitize();
-    if (empty(blockManip::$errors)) {
+    if (empty(block_manip::$errors)) {
         $res = $block->update();
         if ($res) {
             http::locationHeader('/block_manip/custom/index', 
@@ -18,10 +18,10 @@ if (isset($_POST['submit'])) {
             cos_error_log('Should not happen');
         }        
     } else {
-        view_form_errors(blockManip::$errors);
+        view_form_errors(block_manip::$errors);
     }
 }
 
-$id = blockManip::getId();
+$id = block_manip::getId();
 echo $block->includeSubModules($id);
 $block->form('update');

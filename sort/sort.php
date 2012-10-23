@@ -7,7 +7,7 @@ if (!session::checkAccessControl('block_manip_allow')){
 moduleLoader::includeModule('configdb');
 include_module ('block_manip');
 
-$blocks = blockManip::getManipBlocks();
+$blocks = block_manip::getManipBlocks();
 
 
 $data = array ();
