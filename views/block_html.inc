@@ -1,3 +1,4 @@
+<aside>
 <div class ="block">
 <?php
 
@@ -7,3 +8,4 @@ if ($vars['show_title'] == '1') {
 ?>
 <?=$vars['content_block']?>
 </div>
+</aside>
