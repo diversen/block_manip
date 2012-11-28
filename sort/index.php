@@ -1,7 +1,6 @@
 <?php
 
 if (!session::checkAccessControl('block_manip_allow')){
-    moduleloader::setStatus(403);
     return;
 }
 
