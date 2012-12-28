@@ -1,19 +1,32 @@
 ### About
 
-Module for manipulating blocks. 
-Sort left and right blocks, and add custom blocks.
+CosCMS Module for manipulating blocks. Blocks to be used 
+are set in config/config.ini
 
-blocks you will be used with the sorting module must be secified in 
+Example from config.ini: 
 
-config/config.ini
-
-Default configuration looks like this:
-
-    blocks_top[0] = "/modules/system/blocks/system_admin_menu_top.inc"
-    blocks[1] = "/modules/content/blocks/content_tree_keep_state.inc"
-    blocks_all = "blocks,blocks_top"
-
-The `blocks_all` specifies which blocks can be moved around. In your 
-template you use this for getting a `block` of content and you can then
-use to display what ever you like to be displayed. 
+    blocks_top[] = "/modules/system/blocks/system_admin_menu_top.inc"
+    blocks[] = "/modules/content/blocks/content_tree_keep_state.inc"
+    blocks_all = "blocks,blocks_sec,blocks_top"
  
+The `blocks_all` defines all blocks.
+
+If blocks_manip is installed you will now be able to manipulate the blocks
+defined in `blocks_all`. This means you can drag the blocks up and down
+using the jquerysort modules.
+
+### Configuration
+
+    ; how do we filter custom blocks
+    block_manip_filters[0] = "markdown"
+    ; which blocks can we manipulate - these blocks should also be enabled 
+    ; in config/config.ini
+    ; the blocks_unused is used for newly created custom blocks
+    block_manip_blocks = "blocks,blocks_sec,blocks_unused"
+    ; who can manipulate blogs
+    block_manip_allow = "admin"
+    ; use markedit editor
+    block_manip_markedit = 1
+    ; block manip sub modules
+    block_manip_modules[] = 'image'
+
