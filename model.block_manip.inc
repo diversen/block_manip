@@ -334,7 +334,7 @@ class block_manip {
      */
     public static function displayAll () {
         $all = self::getAll();
-        echo templateView::get('block_manip', 'custom_all', $all);
+        echo view::get('block_manip', 'custom_all', $all);
     }
     
     /**
