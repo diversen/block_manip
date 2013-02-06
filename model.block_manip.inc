@@ -5,7 +5,7 @@ class block_manip {
     
     public static function loadAssets ($options) {
         if (config::getModuleIni('block_manip_markedit')) {
-            moduleLoader::includeTemplateCommon('jquery-markedit');
+            moduleloader::includeTemplateCommon('jquery-markedit');
             jquery_markedit_load_assets($options);
         }
     }
@@ -177,7 +177,7 @@ class block_manip {
         html::text('title');
 
         $label = lang::system('system_form_label_content'). '<br />';
-        $label.= moduleLoader::getFiltersHelp(config::getModuleIni('block_manip_filters'));
+        $label.= moduleloader::getFiltersHelp(config::getModuleIni('block_manip_filters'));
 
         html::label('content_block', $label);
         html::textarea('content_block', null, array('class' => 'markdown'));
@@ -387,7 +387,7 @@ class block_manip {
         
         $modules = config::getModuleIni('block_manip_modules');
         //print_r($modules);
-        moduleLoader::includeModules($modules);
+        moduleloader::includeModules($modules);
 
         $return_url = self::getReturnUrlFromId($id);
 
@@ -398,11 +398,11 @@ class block_manip {
         );
 
         if ($modules) {
-            $ary = moduleLoader::subModuleGetAdminOptions($modules, $options);
+            $ary = moduleloader::subModuleGetAdminOptions($modules, $options);
             return implode(MENU_SUB_SEPARATOR, $ary);
         }
         
-        $content = moduleLoader::subModuleGetPreContent($modules, $options);
+        $content = moduleloader::subModuleGetPreContent($modules, $options);
         return implode(MENU_SUB_SEPARATOR, $content);
     }
 
