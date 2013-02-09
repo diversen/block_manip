@@ -278,7 +278,7 @@ class block_manip {
             }
         } catch (PDOException $e) {            
             db::$dbh->rollBack();
-            cos_error_log($e->getTraceAsString());
+            log::error($e->getTraceAsString());
             return false;
         }
         return db::$dbh->commit();

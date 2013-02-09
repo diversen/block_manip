@@ -28,7 +28,7 @@ try {
     }
 } catch (PDOException $e) {            
     db::$dbh->rollBack();
-    cos_error_log($e->getTraceAsString());
+    log::error($e->getTraceAsString());
     //return false;
 }
 db::$dbh->commit();

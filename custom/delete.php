@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
             http::locationHeader('/block_manip/custom/index', 
                     lang::translate('block_manip_confirm_deleted'));
         } else {
-            cos_error_log('Should not happen');
+            log::error('Should not happen');
         }        
     } else {
         html::errors(block_manip::$errors);
