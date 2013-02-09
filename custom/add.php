@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
             cos_error_log('Should not happen');
         }        
     } else {
-        view_form_errors(block_manip::$errors);
+        html::errors(block_manip::$errors);
     }
 }
 
