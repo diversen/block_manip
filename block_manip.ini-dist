@@ -1,5 +1,5 @@
 ; how do we filter custom blocks
-block_manip_filters[0] = "markdown"
+block_manip_filters[0] = "cosmarkdown"
 ; which blocks can we manipulate - these blocks should also be enabled 
 ; in config/config.ini
 ; the blocks_unused is used for newly created custom blocks
