@@ -40,14 +40,27 @@ class block_manip {
         
 
         $str = self::getListStart();
+        $unused = array ();
         foreach ($blocks as $val) {
             if (in_array($val, $valid_blocks)) {
                 $values = config::getMainIni($val);
+                
+                // compute the difference between database entry and file entry
+                // so we can keep on adding entries to file, which user
+                // can add. 
+                
+                $diff = array_diff(config::getMainIniFromFile($val), $values);
+                $unused = array_merge($unused, $diff);
                 $str.= self::getOlBlock($values, $val);
             }
         }
         
+        //print_r($unused);
+        
         $values = config::getMainIni('blocks_unused');
+        
+        $values = array_merge($values, $unused);
+        $values = array_unique($values);
         if (!$values) $values = array ();
         $str.= self::getOlBlock($values, 'blocks_unused');
         $str.= self::getListEnd();
