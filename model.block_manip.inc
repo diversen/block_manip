@@ -99,7 +99,7 @@ class block_manip {
         $str.= "<ol id=\"$name\" class =\"connectedSortable\">\n";
         $num++;
 
-        //print_r($values);
+        if (empty($values)) $values = array ();
         foreach ($values as $val) {
             
             // check for custom blocks
