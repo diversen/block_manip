@@ -1,6 +1,5 @@
 ### About
 
-
 CosCMS Module for manipulating blocks. Blocks to be used 
 are set in config/config.ini
 
