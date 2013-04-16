@@ -58,6 +58,7 @@ class block_manip {
         //print_r($unused);
         
         $values = config::getMainIni('blocks_unused');
+        if (!$values) $values = array ();
         
         $values = array_merge($values, $unused);
         $values = array_unique($values);
