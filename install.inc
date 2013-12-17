@@ -3,7 +3,7 @@
 $_INSTALL['VERSION'] = 2.41;
 
 $_INSTALL['MAIN_MENU_ITEM'] = array (
-    'title' => 'block_manip_module_main_title',
+    'title' => lang::translate('block_manip_module_main_title', null, array ('no_translate' => true)),
     'url' => '/block_manip/sort/index',
     'module_name' => 'block_manip',
     'parent' => 0,

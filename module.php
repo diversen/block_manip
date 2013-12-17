@@ -38,7 +38,7 @@ class block_manip {
         $valid_blocks = self::getManipBlocks();
         
         
-
+        
         $str = self::getListStart();
         $unused = array ();
         foreach ($blocks as $val) {
