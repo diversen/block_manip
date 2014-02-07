@@ -3,9 +3,9 @@
 <?php
 
 if ($vars['show_title'] == '1') {
-    ?><h3><?=$vars['title']?></h3><?
+    ?><h3><?=$vars['title']?></h3><?php
 }
 ?>
-<?=$vars['content_block']?>
+<?php echo $vars['content_block']?>
 </div>
 </aside>
