@@ -11,7 +11,7 @@ $blocks = block_manip::getManipBlocks();
 
 
 $data = array ();
-db::$dbh->beginTransaction();
+db_q::begin();
 
 try {
     foreach ($blocks as $key) {
@@ -27,9 +27,9 @@ try {
         configdb::set($key, $data, 'main');
     }
 } catch (PDOException $e) {            
-    db::$dbh->rollBack();
+    db_q::rollBack();
     log::error($e->getTraceAsString());
     //return false;
 }
-db::$dbh->commit();
+db_q::commit();
 die;

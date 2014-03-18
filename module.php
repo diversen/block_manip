@@ -263,15 +263,15 @@ class block_manip {
      * @return boolean $res true on success and false on failure
      */
     public function delete ($id) {
-        db::$dbh->beginTransaction();
+        db_q::begin();
         
         try {
             $db = new db();
-            $res = $db->delete('block_manip', 'id', $id);
+            $res = db_q::delete('block_manip')->filter( 'id =', $id)->exec();
 
             if (!$res) {
                 // should not happen
-                db::$dbh->rollBack();
+                db_q::rollback();
                 return;
             }
 
@@ -290,11 +290,11 @@ class block_manip {
                 configdb::set($val, $data, 'main');
             }
         } catch (PDOException $e) {            
-            db::$dbh->rollBack();
+            db_q::rollBack();
             log::error($e->getTraceAsString());
             return false;
         }
-        return db::$dbh->commit();
+        return db_q::commit();
     }
     
     /**
