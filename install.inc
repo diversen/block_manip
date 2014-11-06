@@ -1,6 +1,6 @@
 <?php
 
-$_INSTALL['VERSION'] = 2.41;
+$_INSTALL['VERSION'] = 3.01;
 
 $_INSTALL['MAIN_MENU_ITEM'] = array (
     'title' => lang::translate('block_manip_module_main_title', null, array ('no_translate' => true)),
