@@ -43,12 +43,20 @@ class block_manip {
         foreach ($blocks as $val) {
             if (in_array($val, $valid_blocks)) {
                 $values = config::getMainIni($val);
+                if (empty($values)) {
+                    $values = array ();
+                }
                 
                 // compute the difference between database entry and file entry
                 // so we can keep on adding entries to file, which user
                 // can add. 
                 
-                $diff = array_diff(config::getMainIniFromFile($val), $values);
+                $from_file = config::getMainIniFromFile($val);
+                if (!$from_file) {
+                    $from_file = array ();
+                }
+                
+                $diff = array_diff($from_file, $values);
                 $unused = array_merge($unused, $diff);
                 $str.= self::getOlBlock($values, $val);
             }
