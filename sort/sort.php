@@ -8,10 +8,7 @@ moduleloader::includeModule('configdb');
 moduleloader::includeModule ('block_manip');
 
 $blocks = block_manip::getManipBlocks();
-
-
 $data = array ();
-db_q::begin();
 
 try {
     foreach ($blocks as $key) {
@@ -27,9 +24,9 @@ try {
         configdb::set($key, $data, 'main');
     }
 } catch (PDOException $e) {            
-    db_q::rollBack();
+    q::rollBack();
     log::error($e->getTraceAsString());
     //return false;
 }
-db_q::commit();
+q::commit();
 die;
