@@ -1,6 +1,7 @@
 <?php
 
 template::setJs('/js/jquery.tr.js');
+
 class block_manip {
     
     public static function loadAssets ($options) {
@@ -407,7 +408,6 @@ class block_manip {
     public static function includeSubModules ($id) {
         
         $modules = config::getModuleIni('block_manip_modules');
-        //print_r($modules);
         moduleloader::includeModules($modules);
 
         $return_url = self::getReturnUrlFromId($id);
