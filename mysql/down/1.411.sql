@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS `block_manip`;
+DROP TABLE IF EXISTS `blocks`;

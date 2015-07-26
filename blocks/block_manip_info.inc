@@ -1,10 +1,10 @@
 <?php
 
-function block_block_manip_info () {
-    moduleloader::includeModule('block_manip');
+function block_blocks_info () {
+    moduleloader::includeModule('blocks');
     $text = config::getModuleIni('blocks_manip_info');
 
-    $filters = config::getModuleIni('block_manip_filters');
+    $filters = config::getModuleIni('blocks_filters');
     $filtered_content = moduleloader::getFilteredContent($filters, $text); 
     
     $str = "<div class=\"block\">\n<ul><li>$filtered_content</li></ul></div>\n";

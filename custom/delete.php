@@ -1,24 +1,24 @@
 <?php
 
-if (!session::checkAccessControl('block_manip_allow')){
+if (!session::checkAccessControl('blocks_allow')){
     return; 
 }
 
-moduleloader::includeModule ('block_manip');
-$block = new block_manip();
+moduleloader::includeModule ('blocks');
+$block = new blocks();
 
 if (isset($_POST['submit'])) {
-    if (empty(block_manip::$errors)) {
+    if (empty(blocks::$errors)) {
         $id = $block->getId();
         $res = $block->delete($id);
         if ($res) {
-            http::locationHeader('/block_manip/custom/index', 
-                    lang::translate('block_manip_confirm_deleted'));
+            http::locationHeader('/blocks/custom/index', 
+                    lang::translate('blocks_confirm_deleted'));
         } else {
             log::error('Should not happen');
         }        
     } else {
-        html::errors(block_manip::$errors);
+        html::errors(blocks::$errors);
     }
 }
 

@@ -1,25 +1,25 @@
 <?php
 
-if (!session::checkAccessControl('block_manip_allow')){
+if (!session::checkAccessControl('blocks_allow')){
     return;
 }
 
-moduleloader::includeModule ('block_manip');
+moduleloader::includeModule ('blocks');
 
-$block = new block_manip();
+$block = new blocks();
 
 if (isset($_POST['submit'])) {
     $block->sanitize();
-    if (empty(block_manip::$errors)) {
+    if (empty(blocks::$errors)) {
         $res = $block->insert();
         if ($res) {
-            http::locationHeader('/block_manip/custom/index', 
-                    lang::translate('block_manip_confirm_insert'));
+            http::locationHeader('/blocks/custom/index', 
+                    lang::translate('blocks_confirm_insert'));
         } else {
             log::error('Should not happen');
         }        
     } else {
-        html::errors(block_manip::$errors);
+        html::errors(blocks::$errors);
     }
 }
 

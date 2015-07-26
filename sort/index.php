@@ -1,24 +1,24 @@
 <?php
 
-if (!session::checkAccessControl('block_manip_allow')){
+if (!session::checkAccessControl('blocks_allow')){
     return;
 }
-
-moduleloader::includeModule ('block_manip');
-$block_manip_js = config::getModulePath('block_manip') . "/assets/sort.js";
-template::setInlineCss(config::getModulePath('block_manip') . "/assets/sort.css");;
+layout::$blocksContent;
+moduleloader::includeModule ('blocks');
+$blocks_js = config::getModulePath('blocks') . "/assets/sort.js";
+template::setInlineCss(config::getModulePath('blocks') . "/assets/sort.css");;
 
 $search = array ();
-$search[] = '{block_manip_js_ids}';
-$search[] = '{block_manip_js_data}';
+$search[] = '{blocks_js_ids}';
+$search[] = '{blocks_js_data}';
 
 $replace = array ();
-$replace[] = block_manip::getJsIds();
-$replace[] = block_manip::getJsData();
+$replace[] = blocks::getJsIds();
+$replace[] = blocks::getJsData();
 
             //$replace = $code;
             template::setInlineJs(
-                $block_manip_js, 
+                $blocks_js, 
                 // load last or close to. 
                 10000, 
                 array ('no_cache'   => 1, 
@@ -27,5 +27,5 @@ $replace[] = block_manip::getJsData();
             );
 
 
-block_manip::getBlocksFull();
+blocks::getBlocksFull();
 return;

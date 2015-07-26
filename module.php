@@ -2,10 +2,10 @@
 
 template::setJs('/js/jquery.tr.js');
 
-class block_manip {
+class blocks {
     
     public static function loadAssets ($options) {
-        if (config::getModuleIni('block_manip_markedit')) {
+        if (config::getModuleIni('blocks_markedit')) {
             moduleloader::includeTemplateCommon('jquery-markedit');
             jquery_markedit_load_assets($options);
         }
@@ -26,7 +26,7 @@ class block_manip {
      * @return array $blocks all valid blocks that can be moved 
      */
     public static function getManipBlocks () {
-        $blocks = config::getModuleIni('block_manip_blocks');
+        $blocks = config::getModuleIni('blocks_blocks');
         $blocks = explode(',' , $blocks);
         return $blocks;
     }
@@ -74,7 +74,7 @@ class block_manip {
         $str.= self::getOlBlock($values, 'blocks_unused');
         $str.= self::getListEnd();
         
-        $success = lang::translate('block_manip_sort_success');
+        $success = lang::translate('blocks_sort_success');
         $str.= "<div class = \"manip_success\">$success</div>\n";
         echo $str;
     }
@@ -168,7 +168,7 @@ class block_manip {
         
         if ($action == 'delete') {
             html::formStart('content_article_form');
-            html::legend(lang::translate('block_manip_label_delete_block'));
+            html::legend(lang::translate('blocks_label_delete_block'));
             html::submit('submit', lang::system('system_submit_delete'));
             html::formEnd();
             echo html::getStr();
@@ -180,31 +180,31 @@ class block_manip {
             $id = self::getId();
             
             $options = array ();
-            $options['js'] = array ('reference' => 'block_manip', 'parent_id' => $id );
-            block_manip::loadAssets($options);
+            $options['js'] = array ('reference' => 'blocks', 'parent_id' => $id );
+            blocks::loadAssets($options);
             
             $vars = self::getOne($id);
-            $legend = lang::translate('block_manip_label_edit_block');
+            $legend = lang::translate('blocks_label_edit_block');
         } else {
-            $options['js'] = array ('reference' => 'block_manip', 'parent_id' => null );
-            block_manip::loadAssets($options);
-            $legend = lang::translate('block_manip_label_add_block');
+            $options['js'] = array ('reference' => 'blocks', 'parent_id' => null );
+            blocks::loadAssets($options);
+            $legend = lang::translate('blocks_label_add_block');
         }
         
         
         html::init($vars);
-        html::formStart('block_manip_add');
+        html::formStart('blocks_add');
         html::legend($legend);
         html::label('title', lang::system('system_form_label_title'));
         html::text('title');
 
         $label = lang::system('system_form_label_content'). '<br />';
-        $label.= moduleloader::getFiltersHelp(config::getModuleIni('block_manip_filters'));
+        $label.= moduleloader::getFiltersHelp(config::getModuleIni('blocks_filters'));
 
         html::label('content_block', $label);
         html::textarea('content_block', null, array('class' => 'markdown'));
 
-        html::label('show_title', lang::translate('block_manip_form_show_title') );
+        html::label('show_title', lang::translate('blocks_form_show_title') );
         html::checkbox('show_title');
 
         html::submit('submit', lang::system('system_submit'));
@@ -221,11 +221,11 @@ class block_manip {
         } 
             
         if (empty($_POST['title'])) {
-            self::$errors['title'] = lang::translate('block_manip_form_error_title');
+            self::$errors['title'] = lang::translate('blocks_form_error_title');
         } 
         
         if (empty($_POST['content_block'])) {
-            self::$errors['content_block'] = lang::translate('block_manip_form_error_content');
+            self::$errors['content_block'] = lang::translate('blocks_form_error_content');
         }
         
         if (!isset($_POST['show_title'])) {
@@ -235,7 +235,7 @@ class block_manip {
     }
     
     /**
-     * inserts a block into block_manip table,
+     * inserts a block into blocks table,
      * add the block to blocks_unused
      * @return boolean $res true on success and false on failure
      */
@@ -247,7 +247,7 @@ class block_manip {
         $values = html::specialDecode($values);
         
         // we add to blocks_unused
-        $res = $db->insert('block_manip', $values);
+        $res = $db->insert('blocks', $values);
 
         if (!$res) {
             // should not happen
@@ -266,7 +266,7 @@ class block_manip {
     }
     
     /**
-     * delete from block_manip, 
+     * delete from blocks, 
      * traverse all blocks and remove id if set anywhere 
      * @param int $id the block id to delete
      * @return boolean $res true on success and false on failure
@@ -276,7 +276,7 @@ class block_manip {
         
         try {
             $db = new db();
-            $res = q::delete('block_manip')->filter( 'id =', $id)->exec();
+            $res = q::delete('blocks')->filter( 'id =', $id)->exec();
 
             if (!$res) {
                 // should not happen
@@ -286,7 +286,7 @@ class block_manip {
 
             // traverse blocks and remove element if set 
             //$data = array();
-            $blocks = block_manip::getManipBlocks();
+            $blocks = blocks::getManipBlocks();
             foreach ($blocks as $val) {
                 $data = config::getMainIni($val);
 
@@ -307,7 +307,7 @@ class block_manip {
     }
     
     /**
-     * updates a row in block_manip table
+     * updates a row in blocks table
      * @return boolean $res true on success and false on failure 
      */
     public function update () {
@@ -318,7 +318,7 @@ class block_manip {
         $db = new db();
         $values = db::prepareToPost();
         $values = html::specialDecode($values);
-        $db->update('block_manip', $values, $id);
+        $db->update('blocks', $values, $id);
         
         //$insert_id = db::$dbh->lastInsertId();
         $unused = config::getMainIni('blocks_unused');
@@ -337,26 +337,26 @@ class block_manip {
      */
     public static function getAll () {
         $db = new db();
-        $rows = $db->selectAll('block_manip');
+        $rows = $db->selectAll('blocks');
         return $rows = html::specialEncode($rows);
     }
     
     /**
-     * get one row from block_manip
+     * get one row from blocks
      * @param int $id
      * @return array $row 
      */
     public static function getOne ($id) {
         $db = new db();
-        return $row = $db->selectOne('block_manip', 'id', $id);
+        return $row = $db->selectOne('blocks', 'id', $id);
     }
     
     /**
-     *display all rows in block_manip 
+     *display all rows in blocks 
      */
     public static function displayAll () {
         $all = self::getAll();
-        echo view::get('block_manip', 'custom_all', $all);
+        echo view::get('blocks', 'custom_all', $all);
     }
     
     /**
@@ -373,7 +373,7 @@ class block_manip {
      * @return string $url 
      */
     public static function getReturnUrlFromId ($id) {
-        return "/block_manip/custom/edit/$id";
+        return "/blocks/custom/edit/$id";
     }
     
     /**
@@ -407,14 +407,14 @@ class block_manip {
      */
     public static function includeSubModules ($id) {
         
-        $modules = config::getModuleIni('block_manip_modules');
+        $modules = config::getModuleIni('blocks_modules');
         moduleloader::includeModules($modules);
 
         $return_url = self::getReturnUrlFromId($id);
 
         $options = array (
             'parent_id' => $id,
-            'reference' => 'block_manip',
+            'reference' => 'blocks',
             'return_url' => $return_url
         );
 
@@ -432,6 +432,6 @@ class block_manip {
 /**
  * alias. Needs to be blockManip when using sub modules.  
  */
-class blockManip extends block_manip {
+class blockManip extends blocks {
         
 }

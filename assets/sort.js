@@ -1,6 +1,6 @@
 $(function() 
 {
-    $("{block_manip_js_ids}").sortable(
+    $("{blocks_js_ids}").sortable(
     {
         connectWith: '.connectedSortable',
         update : function () 
@@ -8,10 +8,10 @@ $(function()
             $.ajax(
             {
                 type: "POST",
-                url: "/block_manip/sort/sort",
+                url: "/blocks/sort/sort",
                 data: 
                 {
-                    {block_manip_js_data}
+                    {blocks_js_data}
                 },
                 success: function(html)
                 {

@@ -3,9 +3,9 @@
 $_INSTALL['VERSION'] = 3.01;
 
 $_INSTALL['MAIN_MENU_ITEM'] = array (
-    'title' => lang::translate('block_manip_module_main_title', null, array ('no_translate' => true)),
-    'url' => '/block_manip/sort/index',
-    'module_name' => 'block_manip',
+    'title' => lang::translate('blocks_module_main_title', null, array ('no_translate' => true)),
+    'url' => '/blocks/sort/index',
+    'module_name' => 'blocks',
     'parent' => 0,
     'weight' => 100,
     'auth' => 'admin',
@@ -13,8 +13,8 @@ $_INSTALL['MAIN_MENU_ITEM'] = array (
     'section' => 'settings'
 );
 
-$_INSTALL['PUBLIC_CLONE_URL'] = 'git://github.com/diversen/block_manip.git';
-$_INSTALL['PRIVATE_CLONE_URL'] = 'git@github.com:diversen/block_manip.git';
+$_INSTALL['PUBLIC_CLONE_URL'] = 'git://github.com/diversen/blocks.git';
+$_INSTALL['PRIVATE_CLONE_URL'] = 'git@github.com:diversen/blocks.git';
 
 
 

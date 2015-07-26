@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS `block_manip`;
+DROP TABLE IF EXISTS `blocks`;
 
-CREATE TABLE `block_manip` (
+CREATE TABLE `blocks` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `title` varchar(128) NOT NULL,
   `content_block` text,

@@ -1,13 +1,13 @@
 <?php
 
-if (!session::checkAccessControl('block_manip_allow')){
+if (!session::checkAccessControl('blocks_allow')){
     return;
 }
 
 moduleloader::includeModule('configdb');
-moduleloader::includeModule ('block_manip');
+moduleloader::includeModule ('blocks');
 
-$blocks = block_manip::getManipBlocks();
+$blocks = blocks::getManipBlocks();
 $data = array ();
 
 try {

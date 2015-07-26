@@ -1,20 +1,20 @@
 <?php
 
 $_MODULE_MENU[] = array(
-        'title' => lang::translate('block_manip_menu_sort'),
-        'url' => '/block_manip/sort/index',
+        'title' => lang::translate('blocks_menu_sort'),
+        'url' => '/blocks/sort/index',
         'auth' => 'admin',
 );
 
 
 $_MODULE_MENU[] = array (
-        'title' => lang::translate('block_manip_costum_block_list'),
-        'url' => '/block_manip/custom/index',
+        'title' => lang::translate('blocks_costum_block_list'),
+        'url' => '/blocks/custom/index',
         'auth' => 'admin',
 );
 
 $_MODULE_MENU[] = array(
-        'title' => lang::translate('block_manip_menu_costum_add'),
-        'url' => '/block_manip/custom/add',
+        'title' => lang::translate('blocks_menu_costum_add'),
+        'url' => '/blocks/custom/add',
         'auth' => 'admin',
 );
